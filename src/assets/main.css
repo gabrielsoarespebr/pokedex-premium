@@ -1,0 +1,66 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&display=swap');
+
+/* GLOBAL STYLES */
+/* RESET CSS */
+html {
+  box-sizing: border-box;
+
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* MY STYLESHEET */
+:root {
+  --bluePrimary: #1D7AB8;
+  --blueSecondary: #18A5C0;
+
+  --darkBluePrimary: #003366;
+
+  --orangePrimary: #FF8E00;
+
+  --blackPrimary: #1D1D1D;
+  --blackSecondary: #2d2d2d;
+
+  --whitePrimary: #FAFAFB;
+  --whiteSecondary: #C8CDD1;
+
+}
+
+body {
+  font-family: 'Khand', sans-serif;
+  color: white;
+  background: linear-gradient(220deg, #02132B 50%, #01010D);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* SCROLL - BACK */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar {
+  background-color: var(--blackSecondary);
+}
+
+/* SCROLL - FRONT */
+::-webkit-scrollbar-thumb {
+  border-radius: 2rem;
+  background-color: var(--darkBluePrimary);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: white;
+}
