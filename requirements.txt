@@ -1,17 +1,17 @@
-PROJETO: POKEDEX (VueJS)
-PRAZO: 11/02/2023 às 14:00
-ENTREGA: Link pelo e-mail (Repositório e aplicação)
+# PROJETO: POKEDEX (VueJS)
+# PRAZO: 11/02/2023 às 14:00
+# ENTREGA: Link pelo e-mail (Repositório e aplicação)
 
-REQUISITOS
-•	Framework: VueJS
-•	HTML semântico (HTML5/5.1)
-•	Layout responsivo
+# REQUISITOS
+# •	Framework: VueJS
+# •	HTML semântico (HTML5/5.1)
+# •	Layout responsivo
 
-CRITÉRIOS DE AVALIAÇÃO
-•	Organização do projeto
-•	Estilo de codificação
-•	Manutenibilidade e extensibilidade
-•	Desempenho, acessibilidade e uso de HTML semântico
-•	Convenções de nomenclatura usadas
-•	Atendendo aos requisitos
-•	Histórico de commits no repositório do projeto
+# CRITÉRIOS DE AVALIAÇÃO
+# •	Organização do projeto
+# •	Estilo de codificação
+# •	Manutenibilidade e extensibilidade
+# •	Desempenho, acessibilidade e uso de HTML semântico
+# •	Convenções de nomenclatura usadas
+# •	Atendendo aos requisitos
+# •	Histórico de commits no repositório do projeto
