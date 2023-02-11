@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 
+// POKEMON TYPE COLOR GUIDE
 const typeColors = {
   normal: '#A8A77A',
   fire: '#EE8130',
@@ -27,6 +28,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   const pokemonList = this.document.getElementById("pokemonList");
 
+  // ACCESSING POKE API THROUGH AXIOS
   axios
     .get("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0")
     .then(response => {
@@ -37,6 +39,7 @@ window.addEventListener("DOMContentLoaded", function () {
         axios
           .get(pokemon.url)
           .then(pokemonInfo => {
+            // CREATING CARD ACCORDING SEARCHBAR INPUT - Default value is a empty string and returns all pokemons
             if (pokemonInfo.data.name.includes(pokemonInput.value.toLowerCase())) {
               const content = `<div class="pokemonCard rounded p-2" style="background: linear-gradient(var(--whitePrimary), var(--whiteSecondary)); width: 48%; height: 70%">
           <div class="d-flex align-items-center justify-content-between">
@@ -55,14 +58,13 @@ window.addEventListener("DOMContentLoaded", function () {
           </div>
         </div>`;
               pokemonList.innerHTML += content;
-
             }
           })
       })
 
     });
 
-
+  // SEARCHBAR EVENT - Hide cards that don't match user's input
   const pokemonInput = this.document.getElementById("pokemonInput");
 
   pokemonInput.addEventListener("keyup", function () {
@@ -78,6 +80,7 @@ window.addEventListener("DOMContentLoaded", function () {
     })
 
   })
+
 
 })
 
