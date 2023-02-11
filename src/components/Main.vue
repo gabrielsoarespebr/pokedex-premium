@@ -37,7 +37,8 @@ window.addEventListener("DOMContentLoaded", function () {
         axios
           .get(pokemon.url)
           .then(pokemonInfo => {
-            const content = `<div class="pokemonCard rounded p-2" style="background: linear-gradient(var(--whitePrimary), var(--whiteSecondary)); width: 48%; height: 70%">
+            if (pokemonInfo.data.name.includes(pokemonInput.value.toLowerCase())) {
+              const content = `<div class="pokemonCard rounded p-2" style="background: linear-gradient(var(--whitePrimary), var(--whiteSecondary)); width: 48%; height: 70%">
           <div class="d-flex align-items-center justify-content-between">
             <h2 class="m-0 h6">${pokemonInfo.data.name.toUpperCase()}</h2>
             <p class="m-0 fs-6">#${pokemonInfo.data.order}</p>
@@ -49,17 +50,34 @@ window.addEventListener("DOMContentLoaded", function () {
               alt="${pokemonInfo.data.name}" />
             <ul class="list-group text-center">
               ${pokemonInfo.data.types.map(pokemonType => `<li class="list-group-item py-0 px-1" style="background-color:${typeColors[pokemonType.type.name]}">${pokemonType.type.name}</li>`
-            ).join("")}
+              ).join("")}
             </ul>
           </div>
         </div>`;
-            console.log(pokemonInfo);
-            pokemonList.innerHTML += content;
+              pokemonList.innerHTML += content;
 
+            }
           })
+      })
 
-      });
+    });
+
+
+  const pokemonInput = this.document.getElementById("pokemonInput");
+
+  pokemonInput.addEventListener("keyup", function () {
+    const listChildren = Array.from(pokemonList.children);
+
+    listChildren.forEach(pokemon => {
+
+      pokemon.classList.remove("d-none");
+
+      if (!pokemon.outerText.includes(pokemonInput.value.toUpperCase())) {
+        pokemon.classList.add("d-none");
+      }
     })
+
+  })
 
 })
 
@@ -99,7 +117,7 @@ window.addEventListener("DOMContentLoaded", function () {
     </div>
 
     <div class="col-6">
-      <input type="text" id="inputPokemon" class="col-12 rounded"
+      <input type="text" id="pokemonInput" class="col-12 rounded"
         placeholder="Insira o nome do pokémon para pesquisar. Ex: Pikachu">
       <div id="pokemonList" class="d-flex justify-content-between flex-wrap mt-1 gap-2">
       </div>
