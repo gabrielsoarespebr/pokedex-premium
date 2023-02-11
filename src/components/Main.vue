@@ -24,6 +24,24 @@ const typeColors = {
   fairy: '#D685AD',
 };
 
+// POKEMON CLASS TO UPDATE PREVIEW ACCORDING ORDER NUMBER
+class Pokemon {
+  constructor(name, order, imgUrl, type, spcAtk, spcDef, hp, atk, def, speed) {
+    this.name = name;
+    this.order = order;
+    this.imgUrl = imgUrl;
+    this.type = type;
+    this.spcAtk = spcAtk;
+    this.spcDef = spcDef;
+    this.hp = hp;
+    this.atk = atk;
+    this.def = def;
+    this.speed = speed;
+  }
+};
+
+const pokemonArray = [];
+
 window.addEventListener("DOMContentLoaded", function () {
 
   const pokemonList = this.document.getElementById("pokemonList");
@@ -39,9 +57,29 @@ window.addEventListener("DOMContentLoaded", function () {
         axios
           .get(pokemon.url)
           .then(pokemonInfo => {
+            let pokemonTemp = new Pokemon(
+              pokemonInfo.data.name,
+              pokemonInfo.data.order,
+              pokemonInfo.data.sprites.other.dream_world.front_default,
+              pokemonInfo.data.types,
+              pokemonInfo.data.stats[3].base_stat,
+              pokemonInfo.data.stats[4].base_stat,
+              pokemonInfo.data.stats[0].base_stat,
+              pokemonInfo.data.stats[1].base_stat,
+              pokemonInfo.data.stats[2].base_stat,
+              pokemonInfo.data.stats[2].base_stat
+            );
+
+            pokemonArray.push(pokemonTemp);
             // CREATING CARD ACCORDING SEARCHBAR INPUT - Default value is a empty string and returns all pokemons
+            function updatePreview() {
+              console.log("ola");
+
+
+            }
+
             if (pokemonInfo.data.name.includes(pokemonInput.value.toLowerCase())) {
-              const content = `<div class="pokemonCard rounded p-2" style="background: linear-gradient(var(--whitePrimary), var(--whiteSecondary)); width: 48%; height: 70%">
+              const content = `<div class="pokemonCard rounded p-2 cursor-pointer" id="${pokemonInfo.data.order}" style="background: linear-gradient(var(--whitePrimary), var(--whiteSecondary)); width: 48%; height: 70%">
           <div class="d-flex align-items-center justify-content-between">
             <h2 class="m-0 h6">${pokemonInfo.data.name.toUpperCase()}</h2>
             <p class="m-0 fs-6">#${pokemonInfo.data.order}</p>
@@ -58,7 +96,13 @@ window.addEventListener("DOMContentLoaded", function () {
           </div>
         </div>`;
               pokemonList.innerHTML += content;
-            }
+
+
+
+
+            };
+
+
           })
       })
 
@@ -81,7 +125,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
   })
 
-
 })
 
 
@@ -97,16 +140,16 @@ window.addEventListener("DOMContentLoaded", function () {
 
       <div class="d-flex align-items-center justify-content-between">
         <img class="col-5"
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
           alt="Bulbasaur" />
 
         <ul class="list-unstyled">
           <ul class="list-group list-group-horizontal">
-            <li class="list-group-item py-0 px-1 bg-success">GRASS</li>
-            <li class="list-group-item py-0 px-1 bg-danger">POISON</li>
+            <li class="list-group-item py-0 px-1" style="background-color:#7AC74C">grass</li>
+            <li class="list-group-item py-0 px-1" style="background-color:#A33EA1">poison</li>
           </ul>
-          <li>Special attack:</li>
-          <li>Special defense:</li>
+          <li><i class="fa-solid fa-hand-fist"></i> Special atk: 65</li>
+          <li><i class="fa-solid fa-shield-halved"></i> Special def: 65</li>
         </ul>
       </div>
 
